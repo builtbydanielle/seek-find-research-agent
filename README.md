@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# seek+find
 
-## Getting Started
+A multi-step AI research agent that actually goes out and finds things — searches the web, reads the sources, and hands you back a structured report. No hallucinating. No memory. Real results.
 
-First, run the development server:
+Built with Next.js, Claude, and Tavily.
 
+---
+
+## How it works
+
+Type in a topic. The agent figures out what to search for, runs multiple queries, pulls the sources, and synthesizes everything into a clean report with citations. You didn't have to do any of that.
+
+1. Enter a research topic
+2. Claude generates targeted search queries
+3. Tavily runs the searches in real time
+4. Claude reads across all sources and writes the report
+5. Sources are cited and linked
+
+---
+
+## Stack
+
+- **Next.js 16** — App Router, API routes, SSR
+- **Claude (claude-opus-4-5)** — multi-step reasoning and synthesis
+- **Tavily Search API** — real-time web search built for AI agents
+- **TypeScript** — end to end
+- **CSS variables** — dark/light mode theming
+
+---
+
+## Run it locally
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/builtbydanielle/research-agent.git
+cd research-agent
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a `.env.local` file in the root:
+```
+ANTHROPIC_API_KEY=your_key_here
+TAVILY_API_KEY=your_key_here
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Then:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+[http://localhost:3000](http://localhost:3000)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## API keys
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Anthropic** — [console.anthropic.com](https://console.anthropic.com)
+- **Tavily** — [app.tavily.com](https://app.tavily.com) — free tier works fine
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Structure
+```
+app/
+  api/research/route.ts   # API endpoint
+  layout.tsx              # Shell, header, theme
+  page.tsx                # Main page
+components/
+  SearchForm.tsx          # Input
+  ResearchReport.tsx      # Report + sources
+  ThemeToggle.tsx         # Dark/light toggle
+lib/
+  agent.ts                # Agent logic
+  tavily.ts               # Search integration
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by [Danielle Denton](https://github.com/builtbydanielle) — full-stack developer and marketing developer building AI-powered tools to help humans, not replace them.
