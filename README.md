@@ -1,7 +1,6 @@
 # seek+find
 
-A multi-step AI research agent that actually goes out and finds things — searches the web, reads the sources, and hands you back a structured report. No hallucinating. No memory. Real results.
-
+A multi-step AI research agent that actually goes out and finds things, searches the web, reads the sources, and hands you back a structured report.
 Built with Next.js, Claude, and Tavily.
 
 ---
